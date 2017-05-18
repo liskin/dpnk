@@ -6,6 +6,7 @@ use autodie;
 use parent 'DPNK::UA';
 
 use Carp qw(:DEFAULT verbose);
+use JSON::XS;
 use LWP::UserAgent;
 use Net::Netrc;
 
@@ -33,6 +34,17 @@ sub retrieve_gpx {
 	croak $r->status_line unless $r->is_success;
 
 	$r->decoded_content;
+}
+
+sub activities_commutes {
+	my ($self) = @_;
+
+	my $r = $self->ua->get("https://www.strava.com/athlete/training_activities?commute=true",
+		X_Requested_With => 'XMLHttpRequest',
+		Cookie => $self->cookie);
+	croak $r->status_line unless $r->is_success;
+
+	@{decode_json($r->decoded_content)->{models}};
 }
 
 1;
