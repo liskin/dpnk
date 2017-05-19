@@ -5,6 +5,7 @@ use autodie;
 
 use FindBin;
 use lib $FindBin::RealBin;
+chdir $FindBin::RealBin;
 
 use Carp qw(:DEFAULT verbose);
 use DPNK::DPNK;
