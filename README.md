@@ -19,8 +19,8 @@ machine dpnk.dopracenakole.cz
     password ...
 
 machine www.strava.com
-    account _strava3_session=...
+    account "_strava3_session=...; _strava4_session=..."
 ```
 
-(Grab the `_strava3_session` cookie from your browser, e.g. via F12 and
+(Grab the cookies from your browser, e.g. via F12 and
 looking into any HTTP request made to www.strava.com.)
